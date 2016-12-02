@@ -30,11 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PizzaStoreApi.Client">
       <HintPath>..\..\PizzaStoreApi\PizzaStoreApi.Client\obj\Debug\PizzaStoreApi.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,20 +55,90 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\AIngredient.cs" />
+    <Compile Include="Cheese.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Crust.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData.cs" />
     <Compile Include="Interfaces\ICustomizer.cs" />
     <Compile Include="Models\Cheese.cs" />
     <Compile Include="Models\Crust.cs" />
     <Compile Include="Models\Sauce.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\Toppings.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pizza.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CheeseRepo.cs" />
     <Compile Include="Repositories\CrustRepo.cs" />
     <Compile Include="Repositories\SauceRepo.cs" />
     <Compile Include="Repositories\SizeRepo.cs" />
     <Compile Include="Repositories\ToppingRepo.cs" />
+    <Compile Include="Sauce.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Size.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topping.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="PizzaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PizzaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="PizzaModel.edmx.diagram">
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PizzaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PizzaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
